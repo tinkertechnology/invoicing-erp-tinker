@@ -1,6 +1,6 @@
 from django.forms import ModelForm
 from django import forms
-from .models import Order, Product, Table
+from .models import Order, Product, Table, Category
 
 class OrderForm(ModelForm):
     OPTIONS = (
@@ -31,7 +31,8 @@ class OrderForm(ModelForm):
 class ProductForm(ModelForm):
     class Meta:
         model = Product
-        fields = ['product_name','product_details','price']
+        category = forms.ModelChoiceField(queryset=Category.objects.filter(active='1'), empty_label='')
+        fields = ['product_name','product_details','price', 'category']
 
 
 class TakeOrderForm(ModelForm):
@@ -52,8 +53,7 @@ class TableForm(ModelForm):
         fields = ['table_name','table_number']
 
 class CategoryForm(ModelForm):
-    category_name = form.Charfield(required=True, max_length=200)
-
+    category_name = forms.CharField(required=True, max_length=200)
     class Meta:
         model = Category
         fields = ['category_name']

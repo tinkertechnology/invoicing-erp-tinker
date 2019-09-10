@@ -14,6 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url
+from django.urls import include, path
 from django.contrib import admin
 from orders import views as my_order
 from django.contrib.auth.views import (LoginView, LogoutView, 
@@ -63,7 +64,13 @@ urlpatterns = [
     #url(r'^take_order/(?P<order_id>\d+)/$', my_order.take_order_show, name='take_order_show'),
     url(r'^category/new/$', my_order.category_new, name='category_new'),
     url(r'^category/edit/(?P<category_id>\d+)/$', my_order.category_edit, name='category_edit'),
-    url(r'^category/delete/(?P<category_id>\d+)/$', my_order.category_destroy, name='category_delete'),  
+    url(r'^category/delete/(?P<category_id>\d+)/$', my_order.category_destroy, name='category_delete'), 
+
+
+    #ORDER_UNFINISHED_
+    path('table_unfinished_order/<int:table_id>/', my_order.table_unfinished_order, name= 'table_unfinished_order'),
+
+
 
     #PRODUCTS
 

@@ -1,8 +1,5 @@
-{% extends 'layout.html' %}
 
-{% block title %} All Orders {% endblock %}
 {% load widget_tweaks %}
-
 
 {% block body %}
                 <section>
@@ -106,32 +103,5 @@
     
                     </div><!--end .section-body -->
                 </section>
-                <script type="text/javascript">
-                    
-                    $('#table_id').on('change', function(){
-                        // $('#table').submit()
-                        
-                    })
-
-                    $(document).ready(function() {
-                      $("#table_id").select2();
-                    });
-                           
-
-                            new Vue({
-                              el: '#content1234',
-                              data: {
-                                message1: 'Hello Vue.js!',
-                                table_id : 0,
-                              },
-
-                              mounted(){
-                                console.log('jpt load');
-                              }
-                            })
-
-
-
-                </script>
 {% endblock %}
 

@@ -2,13 +2,18 @@ from django.db import models
 
 # Create your models here.
 class Product(models.Model):
-	product_name = models.CharField(max_length=200)
-	product_details = models.TextField()
-	price = models.IntegerField()
-	active = models.IntegerField(default='1')
+    product_name = models.CharField(max_length=200)
+    product_details = models.TextField()
+    price = models.IntegerField()
+    active = models.IntegerField(default='1')
+    category = models.ForeignKey(
 
-	def __str__(self):
-		return '%s (%s tk)' % (self.product_name, self.price)
+        'Category',
+        on_delete=models.CASCADE, null = True,
+        )
+
+    def __str__(self):
+        return '%s (%s Npr)' % (self.product_name, self.price)
 
 class Order (models.Model):
     name = models.CharField(max_length=200)
@@ -16,9 +21,9 @@ class Order (models.Model):
     address = models.TextField()
     delivery_date = models.DateField(blank=True)
     product_id = models.ForeignKey(
-    	'Product',
-    	on_delete=models.CASCADE,
-    	)
+        'Product',
+        on_delete=models.CASCADE,
+        )
 
     table_id = models.ForeignKey(
         'Table',
@@ -36,7 +41,7 @@ class Table(models.Model):
     active = models.IntegerField(default=1)
 
     def __str__(self):
-        return self.table_name
+        return  '%s [number = %s]' % (self.table_name, self.table_number)
 
 class Category(models.Model):
     category_name = models.CharField(max_length=200)

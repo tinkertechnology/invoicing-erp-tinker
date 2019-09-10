@@ -11,7 +11,7 @@
 						<div class="row">
 
 							<!-- BEGIN  - FORM -->
-							<div class="col-lg-12">
+							<div class="col-lg-5">
 								<div class="card">
 									<div class="card-head style-primary">
 										<header>Add Order</header>
@@ -22,7 +22,7 @@
 									</div>
 									<div class="card-body">
 
-										<form class="form" role="form" action="" method="post"> {% csrf_token %}
+										<form id="form_order" class="form" role="form" action="" method="post"> {% csrf_token %}
 
 											<div class="row">
 												<div class="col-sm-6">
@@ -66,7 +66,7 @@
 													</div>
 												</div>
 												<div class="col-md-12">
-													<hr>
+													
 													<label class="radio-inline radio-styled col-sm-2">
 														<b>Order Status :</b>
 													</label>
@@ -83,22 +83,9 @@
 													</div>
 												</div>
 
-												<div class="col-md-12">
-													<hr>
-													<label class="radio-inline radio-styled col-sm-2">
-														<b>Select Table :</b>
-													</label>
-													<div class="col-md-10">
-														<div class="row">
-                                                        	<div class="form-group floating-label">
-																{{ form.table_id | add_class:'form-control select2-list' | attr:'id:table_id'}}
-																<label for="textarea2">Tables ID</label>
-															</div>
-                                                        </div>
-													</div>
-												</div>
+												
 
-												<div class="col-md-12">
+												<div class="col-md-5">
 													<hr>
 													<div class="card-actionbar-row">
 														<input type="submit" class="btn btn-flat btn-primary ink-reaction" value="SUBMIT">
@@ -110,9 +97,71 @@
 								</div><!--end .card -->
 							</div><!--end .col -->
 							<!-- END FORM - TIME ON SITE -->
+							
+							
+							
+							<div class="row">
+							
+								
+									<label class="radio-inline radio-styled col-sm-2">
+										<div class="">Select Table :</div>
+									</label>
+								
+							<div class="col-md-2">
+								
+                                	<div class="form-group floating-label">
+										{{ form.table_id | add_class:'form-control select2-list' | attr:'id:table_id'}}
+										<label for="textarea2">Tables ID</label>
+									</div>
+                                
+							</div>
+						</div>
 
+						<div class="row">
+							<div class="col-md-5">
+								
+
+							</div>
+
+
+						</div>
+						
+						
 						</div><!--end .row -->
+
 					</div><!--end .section-body -->
 				</section>
+
+				<div id="div_table_unfinished_order">
+
+				</div>
+
+				<script type="text/javascript">
+					
+					$(document).ready(function(){
+						$('#form_order').on('submit',function(e){
+							console.log('form submit');
+							e.preventDefault();
+							$.post( '', $('#form_order').serialize(), function(data){
+								$('#table_id').trigger('change');
+							});
+						});
+
+						 $('#table_id').on('change', function(){
+						 	console.log('table_id_on_change');
+
+						 	var table_id = $('#table_id').val();
+						 	$('#div_table_unfinished_order').html(null);
+
+                        	$.get('/table_unfinished_order/'+ table_id, function(data){
+                        		$('#div_table_unfinished_order').html(data);
+                        	});
+                    	});
+					});
+
+
+				</script>
+
+
 
 {% endblock %}
