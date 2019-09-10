@@ -50,6 +50,18 @@
 														{{ form.product_id | add_class:'form-control select2-list' | attr:'id:product_id'}}
 														<label for="textarea2">Product ID</label>
 													</div>
+
+													<div class="form-group floating-label">
+														{{ form.customer_id | add_class:'form-control select2-list' | attr:'id:customer_id'}}
+														<label for="textarea2">Customer ID</label>
+													</div>
+
+													<div class="form-group floating-label">
+															{{ form.table_id | add_class:'form-control select2-list' | attr:'id:table_id'}}
+															<label for="textarea2">Tables ID</label>
+													</div>
+
+														
                                                     <div class="row">
 														<div class="col-sm-6">
 															<div class="form-group floating-label">
@@ -83,6 +95,19 @@
 													</div>
 												</div>
 
+												<div class="row">
+												
+													
+														<label class="radio-inline radio-styled col-sm-2">
+															<div class="">Select Table :</div>
+														</label>
+													
+												<div class="col-md-2">
+													
+					                                	
+					                                
+												</div>
+											</div>
 												
 
 												<div class="col-md-5">
@@ -93,33 +118,18 @@
 												</div>
 											</div>
 										</form>
-									</div><!--end .card-body -->
+									</div>
+									<!--end .card-body -->
 								</div><!--end .card -->
 							</div><!--end .col -->
 							<!-- END FORM - TIME ON SITE -->
 							
 							
 							
-							<div class="row">
-							
-								
-									<label class="radio-inline radio-styled col-sm-2">
-										<div class="">Select Table :</div>
-									</label>
-								
-							<div class="col-md-2">
-								
-                                	<div class="form-group floating-label">
-										{{ form.table_id | add_class:'form-control select2-list' | attr:'id:table_id'}}
-										<label for="textarea2">Tables ID</label>
-									</div>
-                                
-							</div>
-						</div>
 
 						<div class="row">
 							<div class="col-md-5">
-								
+
 
 							</div>
 

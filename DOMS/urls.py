@@ -17,6 +17,7 @@ from django.conf.urls import url
 from django.urls import include, path
 from django.contrib import admin
 from orders import views as my_order
+from orders import views_customer as my_customer
 from django.contrib.auth.views import (LoginView, LogoutView, 
     PasswordChangeView, PasswordChangeDoneView, 
     PasswordResetView, PasswordResetDoneView,)
@@ -71,7 +72,15 @@ urlpatterns = [
     path('table_unfinished_order/<int:table_id>/', my_order.table_unfinished_order, name= 'table_unfinished_order'),
 
 
+   #CUSTOMER 
 
+
+
+    url(r'^customer$', my_customer.index, name='customer'),
+    #url(r'^take_order/(?P<order_id>\d+)/$', my_order.take_order_show, name='take_order_show'),
+    url(r'^customer/new/$', my_customer.new, name='customer_new'),
+    url(r'^customer/edit/(?P<id>\d+)/$', my_customer.edit, name='customer_edit'),
+    url(r'^customer/delete/(?P<id>\d+)/$', my_customer.destroy, name='customer_delete'), 
     #PRODUCTS
 
     url(r'^products$', my_order.index_product, name='home_product'),

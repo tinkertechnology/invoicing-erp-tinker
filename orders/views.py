@@ -38,7 +38,7 @@ def new(request):
             return redirect('/', messages.error(request, 'Form is not valid', 'alert-danger'))
     else:
         form = OrderForm()
-        return render(request, 'new.html', {'form':form , 'tables': tables})
+        return render(request, 'save.html', {'form':form , 'tables': tables})
 
 @login_required
 def edit(request, order_id):
@@ -55,7 +55,7 @@ def edit(request, order_id):
             return redirect('/', messages.error(request, 'Form is not valid', 'alert-danger'))
     else:
         form = OrderForm(instance=order)
-        return render(request, 'edit.html', {'form':form})
+        return render(request, 'save.html', {'form':form})
 
 @login_required
 def destroy(request, order_id):

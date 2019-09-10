@@ -1,6 +1,6 @@
 from django.forms import ModelForm
 from django import forms
-from .models import Order, Product, Table, Category
+from .models import Order, Product, Table, Category, Customer
 
 class OrderForm(ModelForm):
     OPTIONS = (
@@ -20,12 +20,13 @@ class OrderForm(ModelForm):
     payment_option = forms.ChoiceField(choices=OPTIONS)
     product_id = forms.ModelChoiceField(queryset=Product.objects.filter(active='1'), empty_label='')
     table_id = forms.ModelChoiceField(queryset=Table.objects.filter(active='1'), empty_label='')
+    customer_id = forms.ModelChoiceField(queryset=Customer.objects.filter(active='1'), empty_label='')
     delivery_date = forms.DateField(required=True)
     quantity = forms.IntegerField(initial=1)
 
     class Meta:
         model = Order
-        fields = ['name','phone','address','delivery_date','product_id','payment_option','quantity','order_status', 'table_id']
+        fields = ['name','phone','address','delivery_date','product_id','payment_option','quantity','order_status', 'table_id', 'customer_id']
 
 
 class ProductForm(ModelForm):
@@ -57,3 +58,15 @@ class CategoryForm(ModelForm):
     class Meta:
         model = Category
         fields = ['category_name']
+
+
+class CustomerForm(ModelForm):
+    name = forms.CharField(required=True, max_length=200)
+    pan = forms.CharField(max_length=100)
+    phone = forms.CharField(max_length=100)
+    email = forms.CharField(max_length=100)
+    address = forms.CharField(max_length=100)
+    
+    class Meta:
+        model = Customer
+        fields = ['name', 'pan', 'phone', 'email', 'address']
