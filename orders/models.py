@@ -34,6 +34,11 @@ class Order (models.Model):
         'Customer',
         on_delete=models.CASCADE, null = True
         )
+
+    bill = models.ForeignKey(
+        'Bill',
+        on_delete=models.CASCADE, null = True
+        )
     payment_option = models.CharField(max_length=50)
     order_status = models.CharField(max_length=50)
     quantity = models.IntegerField()
@@ -68,3 +73,33 @@ class Customer(models.Model):
     def __str__(self):
         return '%s %s' % (self.name, self.pan)
 
+
+
+class Bill(models.Model):
+    Customer = models.ForeignKey(
+        'Customer',
+        on_delete=models.CASCADE, null = True
+        )
+    Table = models.ForeignKey(
+        'Table',
+        on_delete=models.CASCADE, null = True
+        )
+    date = models.DateField(blank=True)
+    billno = models.IntegerField(null=True)
+    bill_type = models.CharField(max_length=100, null=True)
+    user_str = models.CharField(max_length=100, null=True)
+    sub_total = models.FloatField(default=0)
+    discount_percent = models.FloatField(default=0)
+    discount_amount = models.FloatField(default=0)
+    net_amount = models.FloatField(default=0)
+    service_charge_percent = models.FloatField(default=0)
+    service_charge_amount = models.FloatField(default=0)
+    taxable_amount = models.FloatField(default=0)
+    vat_percent = models.FloatField(default=0)
+    vat_amount = models.FloatField(default=0)
+    total_amount = models.FloatField(default=0)
+    active = models.IntegerField(default=1)
+    pan = models.CharField(max_length=100, null=True)
+    #fiscal_year = 
+    def __str__(self):
+        return '%s' % (self.billno)

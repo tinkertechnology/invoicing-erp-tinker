@@ -18,6 +18,7 @@ from django.urls import include, path
 from django.contrib import admin
 from orders import views as my_order
 from orders import views_customer as my_customer
+from orders import views_bill as my_bill
 from django.contrib.auth.views import (LoginView, LogoutView, 
     PasswordChangeView, PasswordChangeDoneView, 
     PasswordResetView, PasswordResetDoneView,)
@@ -74,13 +75,27 @@ urlpatterns = [
 
    #CUSTOMER 
 
-
-
     url(r'^customer$', my_customer.index, name='customer'),
     #url(r'^take_order/(?P<order_id>\d+)/$', my_order.take_order_show, name='take_order_show'),
     url(r'^customer/new/$', my_customer.new, name='customer_new'),
     url(r'^customer/edit/(?P<id>\d+)/$', my_customer.edit, name='customer_edit'),
     url(r'^customer/delete/(?P<id>\d+)/$', my_customer.destroy, name='customer_delete'), 
+
+    #Bill
+
+       #CUSTOMER 
+
+    url(r'^bill$', my_bill.index, name='bill'),
+    #url(r'^take_order/(?P<order_id>\d+)/$', my_order.take_order_show, name='take_order_show'),
+    url(r'^bill/new/$', my_bill.new, name='bill_new'),
+    url(r'^bill/edit/(?P<id>\d+)/$', my_bill.edit, name='bill_edit'),
+    url(r'^bill/delete/(?P<id>\d+)/$', my_bill.destroy, name='bill_delete'), 
+
+
+
+
+
+
     #PRODUCTS
 
     url(r'^products$', my_order.index_product, name='home_product'),

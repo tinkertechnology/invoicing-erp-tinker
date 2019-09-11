@@ -98,9 +98,7 @@
 												<div class="row">
 												
 													
-														<label class="radio-inline radio-styled col-sm-2">
-															<div class="">Select Table :</div>
-														</label>
+														
 													
 												<div class="col-md-2">
 													
@@ -113,7 +111,9 @@
 												<div class="col-md-5">
 													<hr>
 													<div class="card-actionbar-row">
+
 														<input type="submit" class="btn btn-flat btn-primary ink-reaction" value="SUBMIT">
+														<input type="button" class="btn btn-flat btn-danger ink-reaction" value="MAKE BILL" id="button_make_bill">
 													</div>
 												</div>
 											</div>
@@ -156,6 +156,15 @@
 								$('#table_id').trigger('change');
 							});
 						});
+
+						$('#button_make_bill').on('click',function(e){
+							console.log('bill  submit');
+							e.preventDefault();
+							$.post( '', $('#form_order').serialize(), function(data){
+								$('#table_id').trigger('change');
+							});
+						});
+
 
 						 $('#table_id').on('change', function(){
 						 	console.log('table_id_on_change');

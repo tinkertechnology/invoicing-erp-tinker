@@ -1,6 +1,6 @@
 from django.forms import ModelForm
 from django import forms
-from .models import Order, Product, Table, Category, Customer
+from .models import Order, Product, Table, Category, Customer, Bill
 
 class OrderForm(ModelForm):
     OPTIONS = (
@@ -70,3 +70,30 @@ class CustomerForm(ModelForm):
     class Meta:
         model = Customer
         fields = ['name', 'pan', 'phone', 'email', 'address']
+
+
+class BillForm(ModelForm):
+    Customer = forms.ModelChoiceField(queryset=Customer.objects.filter(active='1'), empty_label='')
+    Table = forms.ModelChoiceField(queryset=Table.objects.filter(active='1'), empty_label='')
+    date = forms.DateField(required=False)
+    billno = forms.IntegerField(initial=0)
+    #bill_type = models.CharField(max_length=100, null=True)
+    #user_str = models.CharField(max_length=100, null=True)
+    #sub_total = models.FloatField(default=0)
+    discount_percent = forms.FloatField(initial=0)
+    discount_amount = forms.FloatField(initial=0)
+    #net_amount = models.FloatField(default=0)
+    service_charge_percent = forms.FloatField(initial=0)
+    #service_charge_amount = models.FloatField(default=0)
+    #taxable_amount = models.FloatField(default=0)
+    vat_percent = forms.FloatField(initial=0)
+    pan = forms.CharField(initial=0)
+    #vat_amount = models.FloatField(default=0)
+    #total_amount = models.FloatField(default=0)
+    #active = models.IntegerField(default=1)
+
+    class Meta:
+        model = Bill
+        fields = ['Customer','Table', 'date', 'billno', 
+    'discount_amount','discount_percent','service_charge_percent', 'vat_percent', 'pan']
+
