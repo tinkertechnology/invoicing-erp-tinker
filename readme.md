@@ -2,7 +2,7 @@
 
 ## About this application
 
-This application is created by MD INZAMUL HAQUE for INFORTECH Solutions. This is a simple restaurant order management system. <br>
+- Device tracking and Invoicing application for Enterprises. 
 ##### Framework: Django 1.10.1
 ##### Language : Python 3.6
 
@@ -13,9 +13,7 @@ This application is created by MD INZAMUL HAQUE for INFORTECH Solutions. This is
 ```
 python manage.py migrate
 ```
-- Login:
-	Username: inzamul36 <br>
-	Password: 123456asdfgh
+
 
 - To Add new user go to "DOMS/urls.py" uncomment this line:
 ```
@@ -39,10 +37,14 @@ to hide admin(Django administration).
 - Mobile view
 
 ## Uses
-* Restaurant Order
-* Facebook Commerce
-* etc...
+- Inventory Management
+- purchase report
+- sells report
+- stock management
+- invoicing and send pdf as email
 
-### Contact me 
-Facebook: facebook.com/inzamul36 <br>
-Email: inzamul36@gmail.com, inzamuk36@live.com, inzamul36@yahoo.com    
+
+
+### Contact Us
+Tinker technology
+info@tinker.com.np
